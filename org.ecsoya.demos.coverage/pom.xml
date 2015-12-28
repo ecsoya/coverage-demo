@@ -3,16 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ecsoya.demos.coverage</groupId>
 	<artifactId>org.ecsoya.demos.coverage</artifactId>
-  <packaging>eclipse-plugin</packaging>
-  <name>Coverage Eclipse Plug-in</name>
-  <parent>
-  	<groupId>coverage-demo</groupId>
-  	<artifactId>parent</artifactId>
-  	<version>0.0.1-SNAPSHOT</version>
-  	<relativePath>..</relativePath>
-  </parent>
-  
-  <repositories>
+	<packaging>eclipse-plugin</packaging>
+	<name>Coverage Eclipse Plug-in</name>
+	<parent>
+		<groupId>coverage-demo</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<repositories>
 		<repository>
 			<id>luna</id>
 			<layout>p2</layout>
@@ -21,6 +21,8 @@
 	</repositories>
 
 	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
