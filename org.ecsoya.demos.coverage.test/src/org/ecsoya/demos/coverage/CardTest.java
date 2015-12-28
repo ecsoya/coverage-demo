@@ -1,6 +1,7 @@
 package org.ecsoya.demos.coverage;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
@@ -12,7 +13,7 @@ public class CardTest {
 
 	@Test
 	public void test() {
-		Display display = new Display();
+		Display display = Display.getCurrent();
 		Shell shell = new Shell(display);
 		shell.setLayout(new FillLayout());
 

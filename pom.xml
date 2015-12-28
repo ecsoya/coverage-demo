@@ -9,6 +9,7 @@
 	<modules>
 		<module>org.ecsoya.demos.coverage</module>
 		<module>org.ecsoya.demos.coverage2</module>
+		<module>org.ecsoya.demos.coverage.test</module>
 	</modules>
 
 	<properties>
@@ -16,37 +17,48 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>luna</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/luna</url>
+		</repository>
+	</repositories>
+
 	<build>
 		<plugins>
 
 			<!-- cobertura -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.7</version>
-				<configuration>
-					<format>xml</format>
-					<maxmem>256m</maxmem>
-					<!-- aggregated reports for multi-module projects -->
-					<aggregate>true</aggregate>
-				</configuration>
-			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>org.codehaus.mojo</groupId> -->
+			<!-- <artifactId>cobertura-maven-plugin</artifactId> -->
+			<!-- <version>2.7</version> -->
+			<!-- <configuration> -->
+			<!-- <format>xml</format> -->
+			<!-- <maxmem>256m</maxmem> -->
+			<!-- aggregated reports for multi-module projects -->
+			<!-- <aggregate>true</aggregate> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
 
 
 			<!-- jacoco -->
-			<!-- <plugin> -->
-			<!-- <groupId>org.jacoco</groupId> -->
-			<!-- <artifactId>jacoco-maven-plugin</artifactId> -->
-			<!-- <version>0.7.5.201505241946</version> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <id>prepare-agent</id> -->
-			<!-- <goals> -->
-			<!-- <goal>prepare-agent</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.5.201505241946</version>
+				<configuration>
+					<destFile>${project.basedir}/../target/jacoco.exec</destFile>
+				</configuration>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
 			<!-- saga -->
 			<!-- <plugin> -->
@@ -80,6 +92,73 @@
 					<repoToken>Xo9i3SUFZKIcWEk40DcRheokfjqZNVtRo</repoToken>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<includes>
+						<include>**/Tests*.java,**/*Tests.java,**/*TestCase.java,**/Test*.java,**/*Test.java</include>
+					</includes>
+					<argLine>-Xdebug
+						-Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n</argLine>
+					<useUIHarness>true</useUIHarness>
+					<!-- Kill test JVM if tests take more than 1 minute to finish -->
+					<forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+
+			<!-- Configuration of target platforms -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<pomDependencies>consider</pomDependencies>
+					<resolver>p2</resolver>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
 		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<!-- workaround for TYCHO-349 or TYCHO-313 -->
+						<strictVersions>false</strictVersions>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>
