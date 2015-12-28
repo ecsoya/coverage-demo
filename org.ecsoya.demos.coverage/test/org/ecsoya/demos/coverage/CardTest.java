@@ -20,14 +20,15 @@ public class CardTest {
 		String name = "Ecsoya";
 		card.setName(name);
 
-		try {
-			assertEquals(name, card.getName());
-		} catch (Exception e) {
-			fail(e.getMessage());
-		} finally {
-			display.dispose();
-		}
+		assertEquals(name, card.getName());
 
+		card.setName(null);
+
+		assertEquals("", "");
+
+		display.dispose();
+
+		assertNull(card.getName());
 	}
 
 }
