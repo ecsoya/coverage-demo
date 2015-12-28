@@ -21,14 +21,29 @@
 	</repositories>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
-		<testSourceDirectory>test</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<includes>
+						<include>**/Tests*.java,**/*Tests.java,**/*TestCase.java,**/Test*.java,**/*Test.java</include>
+					</includes>
+					<!-- <argLine>${argLine}</argLine> -->
+					<useUIHarness>true</useUIHarness>
+					<!-- Kill test JVM if tests take more than 1 minute to finish -->
+					<forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+
 			</plugin>
 		</plugins>
 	</build>
