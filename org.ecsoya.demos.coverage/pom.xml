@@ -4,7 +4,7 @@
 	<groupId>org.ecsoya.demos.coverage</groupId>
 	<artifactId>org.ecsoya.demos.coverage</artifactId>
   <packaging>eclipse-plugin</packaging>
-  <name>Coverage</name>
+  <name>Coverage Eclipse Plug-in</name>
   <parent>
   	<groupId>coverage-demo</groupId>
   	<artifactId>parent</artifactId>

@@ -8,6 +8,7 @@
 	<name>Coverage Demos</name>
 	<modules>
 		<module>org.ecsoya.demos.coverage</module>
+		<module>org.ecsoya.demos.coverage2</module>
 	</modules>
 
 	<properties>
