@@ -6,4 +6,4 @@ script: mvn install
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
-  
+after_failure: "cat /home/travis/build/ecsoya/coverage-demo/org.ecsoya.demos.coverage.test/target/work/data/.metadata/.log"
