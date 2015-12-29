@@ -48,21 +48,21 @@
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
-<!-- 						<configuration> -->
-<!-- 							Where to put jacoco coverage report -->
-<!-- 							<destFile>${sonar.jacoco.reportPath}</destFile> -->
-<!-- 						</configuration> -->
+						<!-- <configuration> -->
+						<!-- Where to put jacoco coverage report -->
+						<!-- <destFile>${sonar.jacoco.reportPath}</destFile> -->
+						<!-- </configuration> -->
 					</execution>
 					<execution>
 						<id>report</id>
 						<goals>
 							<goal>report</goal>
 						</goals>
-<!-- 						<configuration> -->
-<!-- 							Where to put jacoco coverage report -->
-<!-- 							<dataFile>${sonar.jacoco.reportPath}</dataFile> -->
-<!-- 							<outputDirectory>${jacoco.reportDir}</outputDirectory> -->
-<!-- 						</configuration> -->
+						<!-- <configuration> -->
+						<!-- Where to put jacoco coverage report -->
+						<!-- <dataFile>${sonar.jacoco.reportPath}</dataFile> -->
+						<!-- <outputDirectory>${jacoco.reportDir}</outputDirectory> -->
+						<!-- </configuration> -->
 					</execution>
 				</executions>
 			</plugin>
@@ -158,49 +158,49 @@
 	</build>
 	<profiles>
 		<!-- This profile is used to generate jacoco xml report -->
-<!-- 		<profile> -->
-<!-- 			<id>reporting</id> -->
-<!-- 			<build> -->
-<!-- 				<plugins> -->
-<!-- 					Enabling use of jacoco -->
-<!-- 					<plugin> -->
-<!-- 						<groupId>org.jacoco</groupId> -->
-<!-- 						<artifactId>jacoco-maven-plugin</artifactId> -->
-<!-- 						<version>${jacoco.version}</version> -->
-<!-- 						<executions> -->
-<!-- 							<execution> -->
-<!-- 								<id>prepare-agent</id> -->
-<!-- 								<goals> -->
-<!-- 									<goal>prepare-agent</goal> -->
-<!-- 								</goals> -->
-<!-- 								<configuration> -->
-<!-- 									Where to put jacoco coverage report -->
-<!-- 									<destFile>${sonar.jacoco.reportPath}</destFile> -->
-<!-- 								</configuration> -->
-<!-- 							</execution> -->
-<!-- 							<execution> -->
-<!-- 								<id>report</id> -->
-<!-- 								<goals> -->
-<!-- 									<goal>report</goal> -->
-<!-- 								</goals> -->
-<!-- 								<configuration> -->
-<!-- 									Where to put jacoco coverage report -->
-<!-- 									<dataFile>${sonar.jacoco.reportPath}</dataFile> -->
-<!-- 									<outputDirectory>${jacoco.reportDir}</outputDirectory> -->
-<!-- 								</configuration> -->
-<!-- 							</execution> -->
-<!-- 						</executions> -->
-<!-- 					</plugin> -->
-<!-- 				</plugins> -->
-<!-- 			</build> -->
-<!-- 		</profile> -->
-<!-- 		<!-- This profile is used to gather code coverage from unit tests --> -->
-<!-- 		<profile> -->
-<!-- 			<id>run-its</id> -->
-<!-- 			<modules> -->
-<!-- 				<module>org.ecsoya.demos.coverage.test</module> -->
-<!-- 			</modules> -->
-<!-- 		</profile> -->
+		<!-- <profile> -->
+		<!-- <id>reporting</id> -->
+		<!-- <build> -->
+		<!-- <plugins> -->
+		<!-- Enabling use of jacoco -->
+		<!-- <plugin> -->
+		<!-- <groupId>org.jacoco</groupId> -->
+		<!-- <artifactId>jacoco-maven-plugin</artifactId> -->
+		<!-- <version>${jacoco.version}</version> -->
+		<!-- <executions> -->
+		<!-- <execution> -->
+		<!-- <id>prepare-agent</id> -->
+		<!-- <goals> -->
+		<!-- <goal>prepare-agent</goal> -->
+		<!-- </goals> -->
+		<!-- <configuration> -->
+		<!-- Where to put jacoco coverage report -->
+		<!-- <destFile>${sonar.jacoco.reportPath}</destFile> -->
+		<!-- </configuration> -->
+		<!-- </execution> -->
+		<!-- <execution> -->
+		<!-- <id>report</id> -->
+		<!-- <goals> -->
+		<!-- <goal>report</goal> -->
+		<!-- </goals> -->
+		<!-- <configuration> -->
+		<!-- Where to put jacoco coverage report -->
+		<!-- <dataFile>${sonar.jacoco.reportPath}</dataFile> -->
+		<!-- <outputDirectory>${jacoco.reportDir}</outputDirectory> -->
+		<!-- </configuration> -->
+		<!-- </execution> -->
+		<!-- </executions> -->
+		<!-- </plugin> -->
+		<!-- </plugins> -->
+		<!-- </build> -->
+		<!-- </profile> -->
+		<!-- This profile is used to gather code coverage from unit tests -->
+		<!-- <profile> -->
+		<!-- <id>run-its</id> -->
+		<!-- <modules> -->
+		<!-- <module>org.ecsoya.demos.coverage.test</module> -->
+		<!-- </modules> -->
+		<!-- </profile> -->
 		<!-- MacOS specific vm arguments for UI testing -->
 		<profile>
 			<id>osx</id>
