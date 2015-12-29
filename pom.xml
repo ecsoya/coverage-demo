@@ -29,20 +29,6 @@
 
 	<build>
 		<plugins>
-			<!-- Enabling use of jacoco -->
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>${jacoco.version}</version>
-				<executions>
-					<execution>
-						<id>prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 
 			<!-- coveralls -->
 			<plugin>
@@ -65,6 +51,41 @@
 		</plugins>
 	</build>
 	<profiles>
+	
+	<!-- This profile is used to gather code coverage with Jacoco -->
+    <profile>
+        <id>codeCoverage</id>
+        <properties>
+            <!-- Properties to enable jacoco code coverage analysis -->
+            <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+            <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+            <sonar.jacoco.reportPath>/target/jacoco.exec</sonar.jacoco.reportPath>
+        </properties>
+
+        <build>
+            <plugins>
+                <!-- Enabling use of jacoco -->
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco-plugin-version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                            <configuration>
+                                <!-- Where to put jacoco coverage report -->
+                                <destFile>${sonar.jacoco.reportPath}</destFile>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+	
+	
 		<!-- MacOS specific vm arguments for UI testing -->
 		<profile>
 			<id>osx</id>
