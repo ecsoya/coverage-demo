@@ -22,6 +22,9 @@
 				<configuration>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>true</useUIThread>
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
 					<product>org.eclipse.sdk.ide</product>
 					<application>org.eclipse.ui.ide.workbench</application>
 					<dependencies>
