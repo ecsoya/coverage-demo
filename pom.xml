@@ -13,10 +13,10 @@
 	</modules>
 
 	<properties>
-		<tycho-version>0.24.0</tycho-version>
+		<tycho.version>0.24.0</tycho.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Java version -->
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>1.8</jdk.version>
 		<!-- Jacoco version -->
 		<jacoco.version>0.7.5.201505241946</jacoco.version>
 		<!-- Properties to enable jacoco code coverage analysis -->
@@ -51,7 +51,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${tycho.version}</version>
 				<extensions>true</extensions>
 			</plugin>
 
@@ -168,8 +168,8 @@
 		<profile>
 			<id>run-its</id>
 			<modules>
-				<module>../org.ecsoya.demos.coverage.test</module>
-				<module>../org.ecsoya.demos.coverage2</module>
+				<module>org.ecsoya.demos.coverage.test</module>
+				<module>org.ecsoya.demos.coverage2</module>
 			</modules>
 		</profile>
 		<!-- MacOS specific vm arguments for UI testing -->
