@@ -36,7 +36,7 @@
 				<configuration>
 					<format>xml</format>
 					<maxmem>256m</maxmem>
-<!-- 					aggregated reports for multi-module projects -->
+					<!-- aggregated reports for multi-module projects -->
 					<aggregate>true</aggregate>
 				</configuration>
 			</plugin>
@@ -111,6 +111,9 @@
 					<!-- <argLine>-Xdebug -->
 					<!-- -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n</argLine> -->
 					<useUIHarness>true</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<product>org.eclipse.sdk.ide</product>
+					<application>org.eclipse.ui.ide.workbench</application>
 					<!-- Kill test JVM if tests take more than 1 minute to finish -->
 					<forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
 					<testFailureIgnore>true</testFailureIgnore>

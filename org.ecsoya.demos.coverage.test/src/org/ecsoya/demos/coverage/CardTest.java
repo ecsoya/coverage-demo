@@ -27,7 +27,7 @@ public class CardTest {
 
 		assertEquals("", "");
 
-		display.dispose();
+		shell.dispose();
 
 		assertNull(card.getName());
 	}
