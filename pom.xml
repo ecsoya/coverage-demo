@@ -169,7 +169,6 @@
 			<id>run-its</id>
 			<modules>
 				<module>org.ecsoya.demos.coverage.test</module>
-				<module>org.ecsoya.demos.coverage2</module>
 			</modules>
 		</profile>
 		<!-- MacOS specific vm arguments for UI testing -->
