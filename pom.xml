@@ -37,6 +37,36 @@
 
 	<build>
 		<plugins>
+			<!-- Enabling use of jacoco -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<!-- Where to put jacoco coverage report -->
+							<destFile>${sonar.jacoco.reportPath}</destFile>
+						</configuration>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<!-- Where to put jacoco coverage report -->
+							<dataFile>${sonar.jacoco.reportPath}</dataFile>
+							<outputDirectory>${jacoco.reportDir}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<!-- coveralls -->
 			<plugin>
 				<groupId>org.eluder.coveralls</groupId>
