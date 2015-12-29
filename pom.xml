@@ -8,23 +8,15 @@
 	<name>Coverage Demos</name>
 	<modules>
 		<module>org.ecsoya.demos.coverage</module>
-		<module>org.ecsoya.demos.coverage2</module>
+		
 		<module>org.ecsoya.demos.coverage.test</module>
 	</modules>
 
 	<properties>
 		<tycho.version>0.24.0</tycho.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- Java version -->
 		<jdk.version>1.8</jdk.version>
-		<!-- Jacoco version -->
 		<jacoco.version>0.7.5.201505241946</jacoco.version>
-		<!-- Properties to enable jacoco code coverage analysis -->
-		<jacoco.reportDir>../target/jacoco/</jacoco.reportDir>
-		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-		<sonar.jacoco.reportPath>../target/jacoco.exec</sonar.jacoco.reportPath>
-		<sonar.jacoco.itReportPath>../target/jacoco-it.exec</sonar.jacoco.itReportPath>
 	</properties>
 
 	<repositories>
@@ -48,21 +40,6 @@
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
-						<!-- <configuration> -->
-						<!-- Where to put jacoco coverage report -->
-						<!-- <destFile>${sonar.jacoco.reportPath}</destFile> -->
-						<!-- </configuration> -->
-					</execution>
-					<execution>
-						<id>report</id>
-						<goals>
-							<goal>report</goal>
-						</goals>
-						<!-- <configuration> -->
-						<!-- Where to put jacoco coverage report -->
-						<!-- <dataFile>${sonar.jacoco.reportPath}</dataFile> -->
-						<!-- <outputDirectory>${jacoco.reportDir}</outputDirectory> -->
-						<!-- </configuration> -->
 					</execution>
 				</executions>
 			</plugin>
@@ -86,121 +63,8 @@
 			</plugin>
 
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-packaging-plugin</artifactId>
-					<version>${tycho.version}</version>
-					<configuration>
-						<!-- workaround for TYCHO-349 or TYCHO-313 -->
-						<strictVersions>false</strictVersions>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-compiler-plugin</artifactId>
-					<version>${tycho.version}</version>
-					<configuration>
-						<source>${jdk.version}</source>
-						<target>${jdk.version}</target>
-					</configuration>
-				</plugin>
-				<!-- Testing -->
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-surefire-plugin</artifactId>
-					<version>${tycho.version}</version>
-					<configuration>
-						<useUIHarness>false</useUIHarness>
-						<!-- Kill test JVM if tests take more than 1 minute to finish -->
-						<forkedProcessTimeoutInSeconds>60</forkedProcessTimeoutInSeconds>
-					</configuration>
-				</plugin>
-				<!-- Configuration of target platforms -->
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>target-platform-configuration</artifactId>
-					<version>${tycho.version}</version>
-					<configuration>
-						<resolver>p2</resolver>
-						<environments>
-							<environment>
-								<os>linux</os>
-								<ws>gtk</ws>
-								<arch>x86</arch>
-							</environment>
-							<environment>
-								<os>linux</os>
-								<ws>gtk</ws>
-								<arch>x86_64</arch>
-							</environment>
-							<environment>
-								<os>win32</os>
-								<ws>win32</ws>
-								<arch>x86</arch>
-							</environment>
-							<environment>
-								<os>win32</os>
-								<ws>win32</ws>
-								<arch>x86_64</arch>
-							</environment>
-							<environment>
-								<os>macosx</os>
-								<ws>cocoa</ws>
-								<arch>x86_64</arch>
-							</environment>
-						</environments>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 	<profiles>
-		<!-- This profile is used to generate jacoco xml report -->
-		<!-- <profile> -->
-		<!-- <id>reporting</id> -->
-		<!-- <build> -->
-		<!-- <plugins> -->
-		<!-- Enabling use of jacoco -->
-		<!-- <plugin> -->
-		<!-- <groupId>org.jacoco</groupId> -->
-		<!-- <artifactId>jacoco-maven-plugin</artifactId> -->
-		<!-- <version>${jacoco.version}</version> -->
-		<!-- <executions> -->
-		<!-- <execution> -->
-		<!-- <id>prepare-agent</id> -->
-		<!-- <goals> -->
-		<!-- <goal>prepare-agent</goal> -->
-		<!-- </goals> -->
-		<!-- <configuration> -->
-		<!-- Where to put jacoco coverage report -->
-		<!-- <destFile>${sonar.jacoco.reportPath}</destFile> -->
-		<!-- </configuration> -->
-		<!-- </execution> -->
-		<!-- <execution> -->
-		<!-- <id>report</id> -->
-		<!-- <goals> -->
-		<!-- <goal>report</goal> -->
-		<!-- </goals> -->
-		<!-- <configuration> -->
-		<!-- Where to put jacoco coverage report -->
-		<!-- <dataFile>${sonar.jacoco.reportPath}</dataFile> -->
-		<!-- <outputDirectory>${jacoco.reportDir}</outputDirectory> -->
-		<!-- </configuration> -->
-		<!-- </execution> -->
-		<!-- </executions> -->
-		<!-- </plugin> -->
-		<!-- </plugins> -->
-		<!-- </build> -->
-		<!-- </profile> -->
-		<!-- This profile is used to gather code coverage from unit tests -->
-		<profile>
-			<id>run-its</id>
-			<modules>
-				<module>org.ecsoya.demos.coverage.test</module>
-			</modules>
-		</profile>
 		<!-- MacOS specific vm arguments for UI testing -->
 		<profile>
 			<id>osx</id>
