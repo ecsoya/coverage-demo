@@ -33,6 +33,7 @@
 					</dependencies>
 				</configuration>
 			</plugin>
+			<!-- jacoco -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -42,10 +43,10 @@
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
-						<configuration>
-							<!-- Where to put jacoco it coverage report -->
-							<destFile>${sonar.jacoco.itReportPath}</destFile>
-						</configuration>
+						<!-- <configuration> -->
+						<!-- Where to put jacoco it coverage report -->
+						<!-- <destFile>${sonar.jacoco.itReportPath}</destFile> -->
+						<!-- </configuration> -->
 					</execution>
 				</executions>
 			</plugin>
