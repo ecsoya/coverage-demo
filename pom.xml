@@ -195,12 +195,12 @@
 		<!-- </build> -->
 		<!-- </profile> -->
 		<!-- This profile is used to gather code coverage from unit tests -->
-		<!-- <profile> -->
-		<!-- <id>run-its</id> -->
-		<!-- <modules> -->
-		<!-- <module>org.ecsoya.demos.coverage.test</module> -->
-		<!-- </modules> -->
-		<!-- </profile> -->
+		<profile>
+			<id>run-its</id>
+			<modules>
+				<module>org.ecsoya.demos.coverage.test</module>
+			</modules>
+		</profile>
 		<!-- MacOS specific vm arguments for UI testing -->
 		<profile>
 			<id>osx</id>
